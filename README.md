@@ -1,5 +1,10 @@
 # webScraper
 
+
+### Deployed Website
+https://git.heroku.com/gentle-springs-62427.git
+
+==================================================================
 # All the News That's Fit to Scrape
 
 ### Overview
@@ -23,31 +28,6 @@ In this assignment, you'll create a web app that lets users view and leave comme
    5. axios
 
 3. **NOTE**: If you want to earn complete credit for your work, you must use all five of these packages in your assignment.
-
-4. In order to deploy your project to Heroku, you must set up an mLab provision. mLab is remote MongoDB database that Heroku supports natively. Follow these steps to get it running:
-
-5. **Important!!!** Create a Heroku app in your project directory.
-
-6. Run this command in your Terminal/Bash window:
-
-* `heroku addons:create mongolab`
-
-* This command will add the free mLab provision to your project.
-
-7. When you go to connect your mongo database to mongoose, do so the following way:
-
-```js
-// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-
-mongoose.connect(MONGODB_URI);
-```
-
-* This code should connect mongoose to your remote mongolab database if deployed, but otherwise will connect to the local mongoHeadlines database on your computer.
-
-8. [Watch this demo of a possible submission](https://youtu.be/4ltZr3VPmno). See the deployed demo application [here](http://nyt-mongo-scraper.herokuapp.com/).
-
-9. Your site doesn't need to match the demo's style, but feel free to attempt something similar if you'd like. Otherwise, just be creative!
 
 ## Instructions
 
@@ -83,11 +63,6 @@ mongoose.connect(MONGODB_URI);
 * [Mongoose Documentation](http://mongoosejs.com/docs/api.html)
 * [Cheerio Documentation](https://github.com/cheeriojs/cheerio)
 
-### Reminder: Submission on BCS
-
-* Please submit both the deployed Heroku link to your homework AND the link to the Github Repository!
-
----
 
 ### Minimum Requirements
 
@@ -103,26 +78,3 @@ Please see [Heroku’s Account Verification Information](https://devcenter.herok
 
 ---
 
-### Create a README.md
-
-Add a `README.md` to your repository describing the project. Here are some resources for creating your `README.md`. Here are some resources to help you along the way:
-
-* [About READMEs](https://help.github.com/articles/about-readmes/)
-
-* [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
-
----
-
-### Add To Your Portfolio
-
-After completing the homework please add the piece to your portfolio. Make sure to add a link to your updated portfolio in the comments section of your homework so the TAs can easily ensure you completed this step when they are grading the assignment. To receive an 'A' on any assignment, you must link to it from your portfolio.
-
----
-
-### One Last Thing
-
-If you have any questions about this project or the material we have covered, please post them in the community channels in slack so that your fellow developers can help you! If you're still having trouble, you can come to office hours for assistance from your instructor and TAs.
-
-That goes threefold for this unit: MongoDB and Mongoose compose a challenging data management system. If there's anything you find confusing about these technologies, don't hesitate to speak with someone from the Boot Camp team.
-
-**Good Luck!**

@@ -29,7 +29,9 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/webScraper", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/webScraper";
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Require routes with Express
 require("./public/routes/apiRoutes")(app);

@@ -7,7 +7,7 @@ var Article = require("../../models/Article.js")
 
 module.exports = function(app) {
     app.get("/scrape", function(req,res) {
-        axios.get("https://metalinjection.net/").then(function(response) {
+        axios.get("https://google.com/").then(function(response) {
             var $ = cheerio.load(response.data);
             $("article.post").each(function(index, element) {
                 var result = {};
@@ -15,8 +15,8 @@ module.exports = function(app) {
                 result.link = $(element).children().attr("href");
                 result.image = $(element).find("img").attr("src");
                 Article.create(result)
-                .then(function(dbArticle) {
-                    console.log(dbArticle);
+                .then(function(webScraper_DB) {
+                    console.log(webScraper_DB);
                 }).catch(function(err) {
                     console.log(err);
                 })
@@ -27,8 +27,8 @@ module.exports = function(app) {
     
     app.get("/articles", function(req, res) {
         Article.find({})
-          .then(function(dbArticle) {
-            res.json(dbArticle);
+          .then(function(webScraper_DB) {
+            res.json(webScraper_DB);
           })
           .catch(function(err) {
             res.json(err);
@@ -37,8 +37,8 @@ module.exports = function(app) {
 
     app.post("/articles/save/:id", function(req, res) {
         Article.findOneAndUpdate({ _id : req.params.id }, { saved : true })
-        .then(function(dbArticle) {
-            res.json(dbArticle);
+        .then(function(webScraper_DB) {
+            res.json(webScraper_DB);
         })
     })
 };
