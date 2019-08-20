@@ -1,0 +1,28 @@
+<div class="jumbotron container-fluid" id="background">
+
+  {{!-- <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+    <a class="navbar-brand" href="/savedarticles">Saved articles</a>
+  </nav> --}}
+
+  <div id="header" class="row justify-content-md-center">
+      <h1>webScraper</h1>
+  </div>
+  <div id="wrapper">
+    <div id="articles">
+        {{#each articles}}
+          <div id="article" >
+            <ul>
+              <li>
+                <h3>{{title}}</h3>
+                <a href={{link}}>Link</a>
+                <p>{{summary}}</p>
+                <img src={{image}}></img>
+              </li>
+            </ul>
+          </div>
+        {{/each}}
+    </div>
+  </div> 
+
+</div>
