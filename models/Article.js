@@ -19,9 +19,9 @@ var ArticleSchema = new Schema({
   summary: {
     type: String
   },
-  image: {
-    type: String
-  }
+  // image: {
+  //   type: String
+  // }
 });
 
 // This creates our model from the above schema, using mongoose's model method

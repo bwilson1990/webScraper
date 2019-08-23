@@ -1,39 +1,36 @@
-var axios = require("axios");
-var cheerio = require("cheerio");
-var db = require("../models");
+const axios = require("axios");
+const cheerio = require("cheerio");
+const db = require("../models");
 
 module.exports = function(app) {
 
   app.get("/", function(req, res) {
-    axios.get("https://www.nintendo.com/games/game-guide/#filter/:q=&dFR[filterShops][0]=At%20retail&indexName=noa_aem_game_en_us_release_des").then(function(response) {
-      var $ = cheerio.load(response.data);
-      $("game-list-results-container.games").each(function(i, element) {
-        var result = {};
-        result.title = $(this)
-          .children("div [class=boxart]")
-          .children("h3")
-          .text();
-        result.link = $(this)
-          .children("[class=main=link]")
-          .children("a")
-          .attr("href");
-        result.summary = $(this)
-          .children("div [class=row game-info]")
-          .children("p")
-          .children("strong")
-          .text();
-        result.image = $(element)
-          .find("img").attr("src");
+    axios.get("https://nintendonews.com/news/amiibo").then(function(response) {
+      const $ = cheerio.load(response.data);
+      $("div.item.has-target").each(function(i, element) {
+        const result = {};
+        result.title = $(this).find("div.info").children("h2").children("a.external.target-url").text();
+
+        // result.link = $(this)
+        //   .children("div [class=titleLine]")
+        //   .children("a")
+        //   .attr("href");
+        result.summary = $(this).find(".heading").children("p").text();
+        
+        // result.title = result.title.replace(/\t/g, '')
+
         db.Article.create(result)
-      });
+      })
     })
     .then(function(resp) {
       db.Article.find({})
       .then(function(dbArticle) {
-        res.render("index", {articles: dbArticle});
+        res.render("index", { articles: dbArticle });
+        console.log(dbArticle);
       })
       .catch(function(err) {
         res.json(err);
+        console.log(err);
       });
     });
   });
