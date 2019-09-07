@@ -7,17 +7,18 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     axios.get("https://nintendonews.com/news/amiibo").then(function(response) {
       const $ = cheerio.load(response.data);
-      $("div.item.has-target").each(function(i, element) {
-        const result = {};
-        result.title = $(this).find("div.info").children("h2").children("a.external.target-url").text();
 
-        // result.link = $(this)
-        //   .children("div [class=titleLine]")
-        //   .children("a")
-        //   .attr("href");
+      // NOT SURE IF THIS IS HOW YOU WOULD SELECT THIS DIV
+      $("div.item").each(function(i, element) {
+        const result = {};
+
+        // NOT SURE IF THIS IS HOW I SELECT THE TITLE
+        // result.title = $(this).find("div.info").children("h2").children("a.external.target-url").text();
+        result.title = $(this).find("div.info h2 a").text();
+
+        result.link = $(this).find("div.info h2 a").attr("href");
+        console.log(result);
         result.summary = $(this).find(".heading").children("p").text();
-        
-        // result.title = result.title.replace(/\t/g, '')
 
         db.Article.create(result)
       })
