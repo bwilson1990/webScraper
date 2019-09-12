@@ -17,11 +17,13 @@ var ArticleSchema = new Schema({
     required: true
   },
   summary: {
-    type: String
+    type: String,
+    required: true
   },
-  // image: {
-  //   type: String
-  // }
+  image: {
+    type: String,
+    required: true
+  }
 });
 
 // This creates our model from the above schema, using mongoose's model method
