@@ -1,5 +1,4 @@
 # webScraper
 
 
-### Deployed Website
-https://git.heroku.com/gentle-springs-62427.git
+[Deployed Website](https://gentle-springs-62427.herokuapp.com)
