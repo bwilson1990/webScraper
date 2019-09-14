@@ -11,8 +11,8 @@ module.exports = function(app) {
         const result = {};
         result.title = $(this).find("div.info h2 a").text();
         result.link = $(this).find("div.info h2 a").attr("href");
-        result.summary = $(this).find("div.info p").text();
-        result.image = $(this).find("image").attr("href");
+        result.summary = $(this).find("div.info p.summary").text();
+        // result.image = $(this).find("image").attr("href");
         console.log(result);
         db.Article.create(result)
       })
